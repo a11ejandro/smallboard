@@ -1,12 +1,10 @@
 Smallboard::Application.routes.draw do
   get "static/home"
 
-  get "static/help"
+  get "static/about"
 
   resources :posts
 
-
-  resources :posts
   resources :users
 
 

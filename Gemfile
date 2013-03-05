@@ -8,9 +8,12 @@ group :development, :test do
 end
 
 
-gem 'bootstrap'
-gem 'bcrypt-ruby'
-gem 'devise'
+group :assets do
+  gem 'bootstrap'
+  gem 'bcrypt-ruby'
+  gem 'devise'
+  gem 'uglifier', '>= 1.0.3'
+end
 
 group :test do
   gem 'capybara'
@@ -30,7 +33,7 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+ 
 end
 
 gem 'jquery-rails'
