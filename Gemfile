@@ -13,7 +13,7 @@ end
 
 
 group :assets do
-  gem 'bootstrap'
+  gem 'bootstrap-sass'
   gem 'bcrypt-ruby'
   gem 'devise'
   gem 'uglifier', '>= 1.0.3'

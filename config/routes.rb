@@ -1,7 +1,11 @@
 Smallboard::Application.routes.draw do
-  get "static/home"
 
-  get "static/about"
+  get "users/new"
+
+  root to: 'static#home'
+  match '/about',   to: 'static#about'
+  match '/contact', to: 'static#contact'
+  match '/signup',  to: 'users#new'
 
   resources :posts
 
