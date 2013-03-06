@@ -1,7 +1,5 @@
 Smallboard::Application.routes.draw do
 
-  get "users/new"
-
   root to: 'static#home'
   match '/about',   to: 'static#about'
   match '/contact', to: 'static#contact'
