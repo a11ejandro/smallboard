@@ -1,13 +1,17 @@
 Smallboard::Application.routes.draw do
-
   root to: 'static#home'
+  resources :posts
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
+
+  match '/signup',  to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+  
   match '/about',   to: 'static#about'
   match '/contact', to: 'static#contact'
-  match '/signup',  to: 'users#new'
 
-  resources :posts
 
-  resources :users
 
 
   # The priority is based upon order of creation:
