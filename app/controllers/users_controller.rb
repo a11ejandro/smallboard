@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.paginate(page: params[:page])
   end
   
   def index
@@ -52,18 +53,9 @@ class UsersController < ApplicationController
     def none_signed_in_user
       redirect_to root_path, notice: "You already have an account." if signed_in?
     end
-    
-    def signed_in_user
-      store_location
-      redirect_to signin_url, notice: "Please sign in." unless signed_in?
-    end
-    
+            
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
-    end
-    
-    def admin_user
-      redirect_to(root_path) unless current_user.admin?
     end
   end

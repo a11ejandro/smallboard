@@ -106,6 +106,19 @@ describe "Authentication" do
           specify { response.should redirect_to(root_path) }
         end
       end
+      
+      describe "in the Posts controller" do
+
+        describe "submitting to the create action" do
+          before { post posts_path }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete post_path(FactoryGirl.create(:post)) }
+          specify { response.should redirect_to(signin_path) }
+        end
+      end
     end
     describe "as non-admin user" do
       let(:user) { FactoryGirl.create(:user) }
@@ -120,6 +133,11 @@ describe "Authentication" do
       
       describe 'visiting "new" action' do
         before { put signup_path}
+        specify {response.should redirect_to(root_path)}
+      end
+      
+      describe 'visiting "admin" action' do
+        before {put admin_path}
         specify {response.should redirect_to(root_path)}
       end
     end

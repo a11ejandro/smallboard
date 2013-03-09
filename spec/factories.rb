@@ -9,4 +9,16 @@ FactoryGirl.define do
       admin true
     end
   end
+  
+  factory :post do
+    content "Lorem ipsum"
+    title "10 Little Bugs"
+    email "foo@bar.com"
+    user
+    category
+  end
+  
+  factory :category do
+    title "Test Category A"
+  end
 end
