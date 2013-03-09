@@ -5,10 +5,11 @@ describe "Post pages" do
   subject { page }
 
   let(:user) { FactoryGirl.create(:user) }
+  let(:category) { FactoryGirl.create(:category) }
   before { sign_in user }
 
   describe "post creation" do
-    before { visit root_path }
+    before { visit category_path(category) }
 
     describe "with invalid information" do
 

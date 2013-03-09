@@ -1,14 +1,21 @@
  class PostsController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :edit, :update, :destroy]
-  before_filter :admin_user, only: [:edit, :update, :destroy, :admin]
+  before_filter :signed_in_user, only: [:create, :new, :edit, :update, :destroy, :admin]
+  before_filter :admin_user, only: [:edit, :new, :update, :destroy, :admin]
+  
+  def new
+    @post = Post.new
+  end
   
   def create
-    @post = current_user.posts.build(params[:post])
+    @categories = Category.all
+    @category = Category.find(params[:category_id])
+    @post = current_user.posts.build(params[:post]) if signed_in?
+    @post.category = @category
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to root_url
+      redirect_to category_path(@category)
     else
-      render 'static/home'
+      render 'categories/show'
     end
   end
 

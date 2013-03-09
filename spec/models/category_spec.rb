@@ -51,7 +51,7 @@ describe Category do
     
     it "should destroy associated posts" do
       posts = @category.posts.dup
-      @user.destroy
+      @category.destroy
       posts.should_not be_empty
       posts.each do |post|
         Post.find_by_id(post.id).should be_nil

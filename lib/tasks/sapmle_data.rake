@@ -27,7 +27,7 @@ namespace :db do
       content = Faker::Lorem.sentence(5)
       title = 'Test Post'
       users.each do |user| post = user.posts.build(content: content, title: title, email: user.email,)
-         post.category = categories[n % 5 + 1]
+         post.category = categories[n % 5]
          post.save 
        end
     end

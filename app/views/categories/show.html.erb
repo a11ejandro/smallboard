@@ -13,6 +13,12 @@
 	</aside>
 </div>
 
+<% if signed_in? %>
+	<section>
+        <%= render 'shared/post_form' %>
+      </section>
+<% end %>
+
 <div class="span8">
     <% if @category.posts.any? %>
       <h3>Posts (<%= @category.posts.count %>)</h3>
