@@ -18,6 +18,7 @@ describe "Static" do
 
     it_should_behave_like "all static pages"
     it { should_not have_selector 'title', text: '| Home' }
+    it { should have_selector 'h2', text: 'Categories'}
     
   end
 
