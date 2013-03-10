@@ -14,19 +14,21 @@
 			<%= link_to 'Back', users_path %>	
 		</section>
 	</aside>
+	
+	<div class="span8">
+    	<% if @user.posts.any? %>
+     	<h3>Posts (<%= @user.posts.count %>)</h3>
+      	<%= will_paginate @posts %>
+      	<ol class="Posts">
+        	<%= render @posts %>
+      	</ol>
+      	<%= will_paginate @posts %>
+    	<% end %>
+  	</div>
+</div>
 </div>
 
 
 
 
-<div class="span8">
-    <% if @user.posts.any? %>
-      <h3>Posts (<%= @user.posts.count %>)</h3>
-      <%= will_paginate @posts %>
-      <ol class="Posts">
-        <%= render @posts %>
-      </ol>
-      <%= will_paginate @posts %>
-    <% end %>
-  </div>
-</div>
+

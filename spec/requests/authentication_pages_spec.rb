@@ -125,6 +125,21 @@ describe "Authentication" do
       let(:non_admin) { FactoryGirl.create(:user) }
 
       before { sign_in non_admin }
+      
+      describe "submitting a DELETE request to the Post#destroy action" do
+        before { delete post_path(FactoryGirl.create(:post)) }
+        specify { response.should redirect_to(root_path) }
+      end
+      
+      describe "submitting a PUT request to the Posts#update action" do
+        before { put post_path(FactoryGirl.create(:post)) }
+        specify { response.should redirect_to(root_path) }
+      end
+      
+      describe "visiting Posts#edit page" do
+        before { visit edit_post_path(FactoryGirl.create(:post)) }
+        it { should_not have_selector('title', text: full_title('Edit Post')) }
+      end
 
       describe "submitting a DELETE request to the Users#destroy action" do
         before { delete user_path(user) }

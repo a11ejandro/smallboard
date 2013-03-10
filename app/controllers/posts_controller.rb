@@ -27,18 +27,26 @@
   end
 
   def destroy
+    Post.find(params[:id]).destroy
+    flash[:success] = "Post destroyed."
+    redirect_to admin_path
   end
   
   def edit
-    
+    @post = Post.find(params[:id])
   end
   
   def update
-    
+    if @post.update_attributes(params[:post])
+      flash[:success] = "Post updated"
+    else
+      render 'edit'
+    end
   end
   
   def admin
-    
+    @categories = Category.all
+    @posts = Post.paginate(page: params[:page])
   end
   
 end

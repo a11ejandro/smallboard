@@ -1,15 +1,35 @@
  <%= form_for [@category, @post] do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
+  <div class=''> Elements with label <span class='required'>*</span> are required </div>
   <div class="field">
-    <%= f.text_area :title, placeholder: "Title" %>
+  	<%= f.label :title, :class => 'required'%>
+    <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.text_area :email, placeholder: "Email" %>
+  	<%= f.label :email,  :class => 'required'%>
+    <%= f.email_field :email %>
   </div>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Enter the message" %>
+  	<%= f.label :address %>
+  	<%= f.text_field :address %>
   </div>
+  
+  <div class="field">
+  	<%= f.label :city %>
+  	<%= f.text_field :city %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label :content,  :class => 'required'%>
+    <%= f.text_area :content %>
+  </div>
+  
+  <div class='field'>
+  	<%= f.label :picture%>
+  	<%= f.file_field :picture %>
+  </div>
+  	
   
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

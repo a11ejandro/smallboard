@@ -1,0 +1,8 @@
+ <li>
+  <div><%= post.id %></div>
+  <div><%= post.title%></div>
+  <
+    | <%= link_to "delete", post, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+
+</li>

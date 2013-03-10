@@ -17,7 +17,7 @@ namespace :db do
      end
      
     5.times do |n|
-      Category.create!(title: "Category #{n}")
+      Category.create!(title: "Category #{n+1}")
     end
                  
   
@@ -27,7 +27,7 @@ namespace :db do
       content = Faker::Lorem.sentence(5)
       title = 'Test Post'
       users.each do |user| post = user.posts.build(content: content, title: title, email: user.email,)
-         post.category = categories[n % 5]
+         post.category = categories[n % 5 + 1]
          post.save 
        end
     end

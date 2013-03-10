@@ -2,7 +2,7 @@ Smallboard::Application.routes.draw do
   get "categories/new"
 
   root to: 'static#home'
-
+  resources :posts
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :categories do
