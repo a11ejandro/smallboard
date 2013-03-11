@@ -12,7 +12,7 @@ describe Post do
   
   it { should respond_to(:title) }
   it { should respond_to(:content) }
-  it { should respond_to(:picture) }
+  
   it { should respond_to(:email) }
   it { should respond_to(:city) }
   it { should respond_to(:address) }

@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy]
   before_filter :admin_user, only: [:create, :destroy]
   
+  
   def show
     @categories = Category.all
     @category = Category.find(params[:id])
@@ -13,6 +14,7 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
   
+  #For functionality expanding in future
   def create
     @category = Category.new(params[:user])
     if @category.save

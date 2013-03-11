@@ -1,0 +1,38 @@
+<% provide(:title, "Edit post") %> 
+<h1>Update post</h1>
+
+<%= form_for [@category, @post] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class=''> Elements with label <span class='required'></span> are required </div>
+  <div class="field">
+  	<%= f.label :title, :class => 'required'%>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+  	<%= f.label :email,  :class => 'required'%>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+  	<%= f.label :address %>
+  	<%= f.text_field :address %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label :city %>
+  	<%= f.text_field :city %>
+  </div>
+  
+  <div class="field">
+  	<%= f.label :content,  :class => 'required'%>
+    <%= f.text_area :content %>
+  </div>
+  
+  <div class='field'>
+  	<%= f.label :image%>
+  	<%= f.file_field :image %>
+  </div>
+  	
+  
+  <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+<% end %> 

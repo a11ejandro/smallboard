@@ -1,8 +1,30 @@
  <li>
-  <div><%= post.id %></div>
-  <div><%= post.title%></div>
-  <
+  <div class = 'title'>
+  	<%= post.title %>
+  	<span class='category'><%= post.category.title %></span>
+  </div>
+  
+  <div class='contacts'>
+  	<span class = 'city'> <%= post.city %></span>
+  	<span class = 'address'> <%= post.address %></span>
+  	<span class='email'><%= post.email %></span>
+  </div>
+  
+  <% if post.image.exists? %>
+  	<div>
+  		<%=link_to image_tag(post.image.url(:small)), post.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+  	</div>
+  <% end %>
+  <div class="content">
+  	<%= post.content %>
+  <div>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(post.created_at) %> ago.
+  </span>
+  
+	| <%=link_to 'edit', edit_post_path(post) %>
     | <%= link_to "delete", post, method: :delete,
                                   data: { confirm: "You sure?" } %>
+    
 
 </li>

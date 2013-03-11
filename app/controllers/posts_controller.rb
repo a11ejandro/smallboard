@@ -9,14 +9,13 @@
   def create
     @categories = Category.all
     @category = Category.find(params[:category_id])
+    @posts = @category.posts.paginate(page: params[:page])
     @post = current_user.posts.build(params[:post]) if signed_in?
     @post.category = @category
     if @post.save
       flash[:success] = "Post created!"
-      redirect_to category_path(@category)
-    else
-      render 'categories/show'
     end
+    render 'categories/show'
   end
 
   def index
@@ -37,8 +36,10 @@
   end
   
   def update
+    @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
       flash[:success] = "Post updated"
+      redirect_to admin_path
     else
       render 'edit'
     end

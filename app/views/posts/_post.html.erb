@@ -2,7 +2,9 @@
   <div class = 'title'><%= post.title %></div>
   <span class='category'><%= post.category.title %></span>
   <span class='email'><%= post.email %></span>
-  <span class="content"><%= post.content %></span>
+  <div class="content">
+  	<%= post.content %>
+  <div>
   <span class="timestamp">
     Posted <%= time_ago_in_words(post.created_at) %> ago.
   </span>
