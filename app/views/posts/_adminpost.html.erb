@@ -1,13 +1,13 @@
  <li>
   <div class = 'title'>
-  	<%= post.title %>
-  	<span class='category'><%= post.category.title %></span>
+  	<span><%= post.title %></span>
+  	<span class='category'> | <%= link_to post.category.title, post.category %></span>
   </div>
   
   <div class='contacts'>
-  	<span class = 'city'> <%= post.city %></span>
-  	<span class = 'address'> <%= post.address %></span>
   	<span class='email'><%= post.email %></span>
+  	<span class = 'city'> <%= post.city %> </span>
+  	<span class = 'address'> <%= post.address %>< /span>
   </div>
   
   <% if post.image.exists? %>

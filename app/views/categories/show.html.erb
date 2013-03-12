@@ -12,11 +12,6 @@
 	</aside>
 
 	<div class="span8">
-		<% if signed_in? %>
-			<section>
-        		<%= render 'shared/post_form' %>
-      		</section>
-		<% end %>
 		
     	<% if @category.posts.any? %>
      		<h3>Posts (<%= @category.posts.count %>)</h3>
@@ -26,6 +21,11 @@
      		</ol>
       		<%= will_paginate @posts %>
     	<% end %>
+    	<% if signed_in? %>
+			<section>
+        		<%= render 'shared/post_form' %>
+      		</section>
+		<% end %>
   		</div>
 	</div>
 </div>

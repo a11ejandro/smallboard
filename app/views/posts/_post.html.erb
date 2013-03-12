@@ -1,7 +1,20 @@
 <li>
-  <div class = 'title'><%= post.title %></div>
-  <span class='category'><%= post.category.title %></span>
-  <span class='email'><%= post.email %></span>
+  <div class = 'title'>
+  	<span><%= post.title %></span>
+  	<span> | <%= post.category.title %></span>
+  </div>
+  
+  <div class='contacts'>
+  	<span class = 'city'> <%= post.city %></span>
+  	<span class = 'address'> <%= post.address %></span>
+  	<span class='email'><%= post.email %></span>
+  </div>
+  
+  <% if post.image.exists? %>
+  	<div>
+  		<%=link_to image_tag(post.image.url(:small)), post.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+  	</div>
+  <% end %>
   <div class="content">
   	<%= post.content %>
   <div>

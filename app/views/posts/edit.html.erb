@@ -4,35 +4,48 @@
 <%= form_for [@category, @post] do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
-  <div class=''> Elements with label <span class='required'></span> are required </div>
-  <div class="field">
-  	<%= f.label :title, :class => 'required'%>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-  	<%= f.label :email,  :class => 'required'%>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-  	<%= f.label :address %>
-  	<%= f.text_field :address %>
-  </div>
-  
-  <div class="field">
-  	<%= f.label :city %>
-  	<%= f.text_field :city %>
-  </div>
-  
-  <div class="field">
-  	<%= f.label :content,  :class => 'required'%>
-    <%= f.text_area :content %>
-  </div>
-  
-  <div class='field'>
-  	<%= f.label :image%>
-  	<%= f.file_field :image %>
-  </div>
+  	<div id='notation'> (Fields with label <span class='required'></span> are required)</div>
+  	<br/>
+  	<div class='row'>
+  		<div class="span6">
+  			<%= f.label :title, :class => 'required'%>
+    		<%= f.text_field :title %>
+  		</div>
   	
+ 	 	<div class="span6">
+  			<%= f.label :email,  :class => 'required'%>
+    		<%= f.email_field :email %>
+  		</div>
+  	</div>
+  		
+  	<div class='row'>
+  		<div class="span6">
+  			<%= f.label :city %>
+  			<%= f.text_field :city %>
+  		</div>
   
-  <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+  		<div class="span6">
+  			<%= f.label :address %>
+  			<%= f.text_field :address %>
+  		</div>
+  	</div>
+  	
+  	<div class="field">
+  		<%= f.label :content,  :class => 'required'%>
+    	<%= f.text_area :content, :rows => 4 %>
+  	</div>
+  	
+  	<div class="row">
+  		
+  		<div class='span8'>
+  			<%= f.label :image %>
+  			<%= f.file_field :image %>
+  		</div> 	
+  	
+  		<div class='span2'>
+  			</br>
+  			<%= f.submit "Update", class: "btn btn-large btn-primary" %>
+  		</div>
+  	</div>
+  	
 <% end %> 
