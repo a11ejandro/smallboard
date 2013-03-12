@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   attr_accessible :address, :city, :content, :email, :title, :image
   #PaperClip
-  has_attached_file :image, :styles => { :small => ['200x200#', :jpg]}
+  has_attached_file :image, :styles => { :small => ['128x128#', :jpg]}
   
   belongs_to :user
   belongs_to :category

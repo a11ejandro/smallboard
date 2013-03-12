@@ -1,30 +1,44 @@
- <li>
-  <div class = 'title'>
-  	<span><%= post.title %></span>
-  	<span class='category'> | <%= link_to post.category.title, post.category %></span>
-  </div>
+ <li class='post-container'>
+ 	<div class='row'>
+  		<div class='span4 post-title'>
+  			<%= post.title %>
+  		</div>
+  		<div class='span3 post-category'>
+  	 		<%= link_to post.category.title, post.category %>
+  	 	</div>
+	</div>
   
-  <div class='contacts'>
-  	<span class='email'><%= post.email %></span>
-  	<span class = 'city'> <%= post.city %> </span>
-  	<span class = 'address'> <%= post.address %>< /span>
-  </div>
-  
-  <% if post.image.exists? %>
-  	<div>
-  		<%=link_to image_tag(post.image.url(:small)), post.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
-  	</div>
-  <% end %>
-  <div class="content">
-  	<%= post.content %>
-  <div>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(post.created_at) %> ago.
-  </span>
+	<div class='row contacts'>
+  		<div class='span2' class='post-email'>
+  			<%= post.email %>
+  		</div>
+  		<div class='span2 post-city'>
+  			<%= post.city %>
+  		</div>
+  		<div class='span3 post-address'>
+			<%= post.address %>
+		</div>
+	</div>
+
+	<div class='row post-contents'>
+		
+		<% if post.image.exists? %>
+			<div class='post-image span2'>
+				<%=link_to image_tag(post.image.url(:small)), post.image.url(:original), :popup=>['original_image', 'height=700,width=900'] %>
+			</div>
+		<% end %>
+		
+		<div class='content-text span5'><%= wrap(post.content) %></div>
+
+	</div>
+	<div>
+	<span class="timestamp">
+    	Posted <%= time_ago_in_words(post.created_at) %> ago.
+	</span>
   
 	| <%=link_to 'edit', edit_post_path(post) %>
     | <%= link_to "delete", post, method: :delete,
                                   data: { confirm: "You sure?" } %>
-    
-
+    </div>
+    <br/>
 </li>
